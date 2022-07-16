@@ -36,7 +36,7 @@ export async function getStaticProps({ params }) {
         props: {
             pokemon: await res.json(),
         },
-        revalidate: 30, // For update data every 30 sec
+        // revalidate: 30, // For update data every 30 sec
     }
 }
 
