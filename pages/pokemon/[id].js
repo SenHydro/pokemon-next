@@ -1,10 +1,35 @@
-// import { useRouter } from "next/router"
-// import { useState,useEffect } from 'react'
+import { useRouter } from "next/router"
+import { useState,useEffect } from 'react'
 import styles from '../../styles/Details.module.css'
 import Head from 'next/head'
 import Link from 'next/link'
 
-export async function getServerSideProps({ params }) {
+// SSR(Server-Side Rendering)
+// export async function getServerSideProps({ params }) {
+//     const res = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`);
+
+//     return {
+//         props: {
+//             pokemon: await res.json(),
+//         }
+//     }
+// }
+
+
+export async function getStaticPaths() {
+    const res = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json");
+    const pokemon = await res.json();
+
+    return {
+        paths: pokemon.map((pokemon) => ({
+            params: { id: pokemon.id.toString() },
+        })),
+        fallback: false,
+    }
+}
+
+// SSG(Static Site Generator)
+export async function getStaticProps({ params }) {
     const res = await fetch(`https://jherr-pokemon.s3.us-west-1.amazonaws.com/pokemon/${params.id}.json`);
 
     return {
