@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-import { useState,useEffect } from 'react'
+// import { useState,useEffect } from 'react'
 
 export async function getServerSideProps() {
   const res = await fetch("https://jherr-pokemon.s3.us-west-1.amazonaws.com/index.json");

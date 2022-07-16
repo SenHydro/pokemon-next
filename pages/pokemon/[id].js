@@ -1,5 +1,5 @@
-import { useRouter } from "next/router"
-import { useState,useEffect } from 'react'
+// import { useRouter } from "next/router"
+// import { useState,useEffect } from 'react'
 import styles from '../../styles/Details.module.css'
 import Head from 'next/head'
 import Link from 'next/link'
